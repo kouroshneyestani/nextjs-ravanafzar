@@ -11,7 +11,7 @@ export default function Layout({ children }) {
             name: "خانه",
         },
         {
-            href: "/tests",
+            href: "/quizzes",
             name: "تست های روان شناسی",
         },
         {
