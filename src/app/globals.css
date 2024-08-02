@@ -16,18 +16,36 @@
     }
 }
 
+:root {
+    --afc-text-color: #000000;
+    --afc-overlay-color: #eee;
+    --afc-background-color: #ffffff;
+
+    --afc-primary-color: hotpink;
+    --afc-secondary-color: #2d3748;
+}
+/* 
+ * Colors
+ */
 body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb));
+    color: var(--afc-text-color);
+    background-color: var(--afc-background-color);
+}
+body.dark {
+    --afc-text-color: #ffffff;
+    --afc-overlay-color: #333333;
+    --afc-background-color: #000000;
+}
+/* 
+ * Typography
+ */
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
 }
 
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
+[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
 }
+

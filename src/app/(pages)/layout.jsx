@@ -8,15 +8,15 @@ export default function Layout({ children }) {
     const links = [
         {
             href: "/",
-            name: "Home",
+            name: "خانه",
         },
         {
             href: "/tests",
-            name: "Tests",
+            name: "تست های روان شناسی",
         },
         {
             href: "/blog",
-            name: "Blog",
+            name: "وبلاگ",
         },
     ];
 
