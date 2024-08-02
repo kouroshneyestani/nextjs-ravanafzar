@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "question": "How do you feel today?",
+        "options": ["Very Bad", "Bad", "Neutral", "Good", "Very Good"],
+        "required": true
+    },
+    {
+        "id": 2,
+        "question": "How was your sleep?",
+        "options": ["Very Bad", "Bad", "Neutral", "Good", "Very Good"],
+        "required": false
+    },
+    {
+        "id": 3,
+        "question": "How is your mood?",
+        "options": ["Very Bad", "Bad", "Neutral", "Good", "Very Good"],
+        "required": true
+    }
+]
