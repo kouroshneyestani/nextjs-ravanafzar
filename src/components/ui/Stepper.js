@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { StepContext } from "../../contexts/StepperContext";
 import { useFetch } from "../../hooks/useFetch";
 import useSubmitData from "../../hooks/useSubmitData";
@@ -13,6 +13,7 @@ const Stepper = ({ className }) => {
         submitData,
     } = useSubmitData("/submit-endpoint"); // Replace with your actual endpoint
     const [answers, setAnswers] = useState({});
+    const [submitStatus, setSubmitStatus] = useState(null); // To track submission status
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error loading questions</div>;
@@ -29,8 +30,13 @@ const Stepper = ({ className }) => {
         setAnswers({ ...answers, [currentStep]: value });
     };
 
-    const handleFinish = () => {
-        submitData(answers);
+    const handleFinish = async () => {
+        const result = await submitData(answers);
+        if (result) {
+            setSubmitStatus("success");
+        } else {
+            setSubmitStatus("error");
+        }
     };
 
     return (
@@ -98,8 +104,16 @@ const Stepper = ({ className }) => {
                     >
                         {isSubmitting ? "Submitting..." : "Finish"}
                     </button>
-                    {response && (
-                        <div className="mt-4 text-green-500">{response}</div>
+                    {submitStatus === "success" && (
+                        <div className="mt-4 text-green-500">
+                            <div>Submission successful!</div>
+                            <div>{response}</div>
+                        </div>
+                    )}
+                    {submitStatus === "error" && (
+                        <div className="mt-4 text-red-500">
+                            <div>Submission failed. Please try again.</div>
+                        </div>
                     )}
                     {submitError && (
                         <div className="mt-4 text-red-500">

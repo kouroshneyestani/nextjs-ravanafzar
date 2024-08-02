@@ -9,7 +9,7 @@
         "id": 2,
         "question": "How was your sleep?",
         "options": ["Very Bad", "Bad", "Neutral", "Good", "Very Good"],
-        "required": false
+        "required": true
     },
     {
         "id": 3,
