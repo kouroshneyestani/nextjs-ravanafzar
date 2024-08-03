@@ -34,6 +34,13 @@ const Stepper = ({ className }) => {
         }, 300); // Match this duration with your Tailwind transition duration
     };
 
+    const handleOptionChange = (value) => {
+        setAnswers({ ...answers, [currentStep]: value });
+        if (currentStep < questions.length - 1) {
+            handleTransition("next");
+        }
+    };
+
     if (loading) return <Loading />;
     if (error) return <div>Error loading questions</div>;
 
@@ -42,10 +49,6 @@ const Stepper = ({ className }) => {
     const isLastStep = currentStep === questions.length - 1;
     const isFinishDisabled =
         isLastStep && currentQuestion.required && !answers[currentStep];
-
-    const handleOptionChange = (value) => {
-        setAnswers({ ...answers, [currentStep]: value });
-    };
 
     const handleFinish = async () => {
         const result = await submitData(answers);
@@ -58,7 +61,7 @@ const Stepper = ({ className }) => {
     };
 
     return (
-        <div className={` relative`}>
+        <div className={`relative`}>
             <ProgressBar
                 currentStep={
                     isSurveyComplete ? questions.length - 1 : currentStep
@@ -154,8 +157,8 @@ const Stepper = ({ className }) => {
                                     disabled={isSubmitting || isFinishDisabled}
                                 >
                                     {isSubmitting
-                                        ? "در حال ارسال..."
-                                        : "ارسال تست"}
+                                        ? "در حال پردازش..."
+                                        : "دیدن نتایج"}
                                     <LongArrowLeft width={21} />
                                 </button>
                             ) : (
