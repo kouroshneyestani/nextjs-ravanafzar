@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
-import { StepContext } from "../../contexts/StepperContext";
+import { StepperContext } from "../../contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
 import {
     Button,
@@ -11,7 +11,7 @@ import {
 } from "../../components";
 
 const Stepper = ({ className }) => {
-    const { currentStep, nextStep, previousStep } = useContext(StepContext);
+    const { currentStep, nextStep, previousStep } = useContext(StepperContext);
     const { data: questions, loading, error } = useFetch("/data/all.json");
     const {
         isSubmitting,

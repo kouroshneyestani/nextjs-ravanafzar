@@ -2,7 +2,7 @@
 
 import React, { createContext, useState } from "react";
 
-const StepContext = createContext();
+const StepperContext = createContext();
 
 const StepProvider = ({ children }) => {
     const [currentStep, setCurrentStep] = useState(0);
@@ -11,10 +11,10 @@ const StepProvider = ({ children }) => {
     const previousStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
 
     return (
-        <StepContext.Provider value={{ currentStep, nextStep, previousStep }}>
+        <StepperContext.Provider value={{ currentStep, nextStep, previousStep }}>
             {children}
-        </StepContext.Provider>
+        </StepperContext.Provider>
     );
 };
 
-export { StepContext, StepProvider };
+export { StepperContext, StepProvider };
