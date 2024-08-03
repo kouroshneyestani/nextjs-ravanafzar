@@ -4,6 +4,7 @@ import { useFetch, useSubmitData } from "../../hooks";
 import {
     Button,
     Loading,
+    RadioBox,
     ProgressBar,
     LongArrowLeft,
     LongArrowRight,
@@ -19,36 +20,36 @@ const Stepper = ({ className }) => {
         submitData,
     } = useSubmitData("/submit-endpoint");
     const [answers, setAnswers] = useState({});
-    const [submitStatus, setSubmitStatus] = useState(null); // To track submission status
-    const [isTransitioning, setIsTransitioning] = useState(false); // For handling transition effects
-    const [isSurveyComplete, setIsSurveyComplete] = useState(false); // To track survey completion
+    const [submitStatus, setSubmitStatus] = useState(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [isSurveyComplete, setIsSurveyComplete] = useState(false);
 
     useEffect(() => {
-        // Initialize the answers state with the first option of the first question
         if (questions && questions.length > 0 && currentStep === 0) {
             setAnswers({ [0]: questions[0].options[0] });
         }
     }, [questions, currentStep]);
 
     const handleTransition = (direction) => {
-        if (isSurveyComplete) return; // Prevent transitions if survey is complete
+        if (isSurveyComplete) return;
 
         setIsTransitioning(true);
         setTimeout(() => {
             direction === "next" ? nextStep() : previousStep();
             setIsTransitioning(false);
-        }, 300); // Match this duration with your Tailwind transition duration
+        }, 300);
     };
 
     const handleOptionChange = (value) => {
         setAnswers({ ...answers, [currentStep]: value });
+
         if (currentStep < questions.length - 1) {
             handleTransition("next");
         }
     };
 
     if (loading) return <Loading />;
-    if (error) return <div>Error loading questions</div>;
+    if (error) return <div>مشکل در ارتباط با سرور.</div>;
 
     const currentQuestion = questions[currentStep];
     const isNextDisabled = currentQuestion.required && !answers[currentStep];
@@ -69,12 +70,11 @@ const Stepper = ({ className }) => {
     return (
         <div className={`relative`}>
             <ProgressBar
+                className="absolute top-0 left-0"
+                totalSteps={questions.length}
                 currentStep={
                     isSurveyComplete ? questions.length - 1 : currentStep
                 }
-                height="h-1"
-                totalSteps={questions.length}
-                className="absolute top-0 left-0"
             />
             {currentStep < questions.length ? (
                 <>
@@ -98,52 +98,20 @@ const Stepper = ({ className }) => {
                                 {currentQuestion.body}
                             </h4>
                         </header>
-                        <div className="flex flex-col gap-2">
-                            {currentQuestion.options.map((option, index) => (
-                                <label
-                                    key={index}
-                                    className={`w-full h-14 flex gap-4 items-center cursor-pointer px-4 border-2 rounded-3xl ${
-                                        answers[currentStep] === option
-                                            ? "border-primary"
-                                            : ""
-                                    }`}
-                                >
-                                    <input
-                                        type="radio"
-                                        name={`question-${currentStep}`}
-                                        value={option}
-                                        checked={
-                                            answers[currentStep] === option
-                                        }
-                                        onChange={() =>
-                                            handleOptionChange(option)
-                                        }
-                                        className="hidden"
-                                    />
-                                    <span
-                                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                                            answers[currentStep] === option
-                                                ? "border-primary bg-primary"
-                                                : "border-primary"
-                                        }`}
-                                    >
-                                        {answers[currentStep] === option && (
-                                            <span className="w-1 h-1 rounded-full bg-white"></span>
-                                        )}
-                                    </span>
-                                    <span
-                                        className={`font-bold ${
-                                            answers[currentStep] === option &&
-                                            "text-primary"
-                                        }`}
-                                    >
-                                        {option}
-                                    </span>
-                                </label>
-                            ))}
-                        </div>
 
-                        <div className="mx-auto flex justify-between items-center gap-4">
+                        <article className="flex flex-col gap-2">
+                            {currentQuestion.options.map((option, index) => (
+                                <RadioBox
+                                    key={index}
+                                    option={option}
+                                    isSelected={answers[currentStep] === option}
+                                    onChange={handleOptionChange}
+                                    name={`question-${currentStep}`}
+                                />
+                            ))}
+                        </article>
+
+                        <footer className="mx-auto flex justify-between items-center gap-4">
                             <Button
                                 color="primary"
                                 onClick={() => handleTransition("prev")}
@@ -174,7 +142,7 @@ const Stepper = ({ className }) => {
                                     <LongArrowLeft width={21} />
                                 </Button>
                             )}
-                        </div>
+                        </footer>
                     </div>
                 </>
             ) : (
