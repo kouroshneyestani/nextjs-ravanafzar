@@ -1,7 +1,5 @@
 "use client";
 
-import Button from '@mui/material/Button';
-
 import Stepper from "../../../components/ui/Stepper";
 
 export default function Page() {

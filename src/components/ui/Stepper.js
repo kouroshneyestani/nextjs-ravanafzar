@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { StepContext } from "../../contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
-import { ProgressBar } from "../../components";
+import { Loading, ProgressBar } from "../../components";
 
 const Stepper = ({ className }) => {
     const { currentStep, nextStep, previousStep } = useContext(StepContext);
@@ -34,7 +34,7 @@ const Stepper = ({ className }) => {
         }, 300); // Match this duration with your Tailwind transition duration
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loading />;
     if (error) return <div>Error loading questions</div>;
 
     const currentQuestion = questions[currentStep];

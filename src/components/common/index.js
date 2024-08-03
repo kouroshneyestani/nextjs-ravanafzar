@@ -1,3 +1,4 @@
+import Loading from "./Loading";
 import ProgressBar from "./ProgressBar";
 
-export { ProgressBar };
+export { Loading, ProgressBar };
