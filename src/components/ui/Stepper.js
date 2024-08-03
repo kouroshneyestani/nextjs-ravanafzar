@@ -58,108 +58,117 @@ const Stepper = ({ className }) => {
     };
 
     return (
-        <div
-            className={`${className} relative transition-transform duration-300 transform ${
-                isTransitioning
-                    ? "scale-95 opacity-50"
-                    : "scale-100 opacity-100"
-            }`}
-        >
+        <div className={` relative`}>
             <ProgressBar
                 currentStep={
                     isSurveyComplete ? questions.length - 1 : currentStep
                 }
+                height="h-1"
                 totalSteps={questions.length}
-                className="mb-4"
+                className="absolute top-0 left-0"
             />
             {currentStep < questions.length ? (
                 <>
-                    <header className="flex flex-col gap-4">
-                        <div className="flex gap-2 text-lg font-bold text-primary">
-                            <span className="text-xl">پرسش</span>
-                            <div className="flex gap-1">
-                                <span>{currentStep + 1}</span>
-                                <span>از</span>
-                                <span>{questions.length}</span>
+                    <div
+                        className={`${className} relative transition-transform duration-300 transform ${
+                            isTransitioning
+                                ? "scale-95 opacity-50"
+                                : "scale-100 opacity-100"
+                        }`}
+                    >
+                        <header className="flex flex-col gap-4">
+                            <div className="flex gap-2 text-lg font-bold text-primary">
+                                <span className="text-xl">پرسش</span>
+                                <div className="flex gap-1">
+                                    <span>{currentStep + 1}</span>
+                                    <span>از</span>
+                                    <span>{questions.length}</span>
+                                </div>
                             </div>
-                        </div>
-                        <h4 className="text-3xl font-bold mb-2">
-                            {currentQuestion.body}
-                        </h4>
-                    </header>
-                    <div className="flex flex-col gap-2">
-                        {currentQuestion.options.map((option, index) => (
-                            <label
-                                key={index}
-                                className={`w-full h-14 flex gap-4 items-center cursor-pointer px-4 border-2 rounded-3xl ${
-                                    answers[currentStep] === option
-                                        ? "border-primary"
-                                        : ""
-                                }`}
-                            >
-                                <input
-                                    type="radio"
-                                    name={`question-${currentStep}`}
-                                    value={option}
-                                    checked={answers[currentStep] === option}
-                                    onChange={() => handleOptionChange(option)}
-                                    className="hidden"
-                                />
-                                <span
-                                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                            <h4 className="text-3xl font-bold mb-2">
+                                {currentQuestion.body}
+                            </h4>
+                        </header>
+                        <div className="flex flex-col gap-2">
+                            {currentQuestion.options.map((option, index) => (
+                                <label
+                                    key={index}
+                                    className={`w-full h-14 flex gap-4 items-center cursor-pointer px-4 border-2 rounded-3xl ${
                                         answers[currentStep] === option
-                                            ? "border-primary bg-primary"
-                                            : "border-primary"
+                                            ? "border-primary"
+                                            : ""
                                     }`}
                                 >
-                                    {answers[currentStep] === option && (
-                                        <span className="w-1 h-1 rounded-full bg-white"></span>
-                                    )}
-                                </span>
-                                <span
-                                    className={`font-bold ${
-                                        answers[currentStep] === option &&
-                                        "text-primary"
+                                    <input
+                                        type="radio"
+                                        name={`question-${currentStep}`}
+                                        value={option}
+                                        checked={
+                                            answers[currentStep] === option
+                                        }
+                                        onChange={() =>
+                                            handleOptionChange(option)
+                                        }
+                                        className="hidden"
+                                    />
+                                    <span
+                                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                                            answers[currentStep] === option
+                                                ? "border-primary bg-primary"
+                                                : "border-primary"
+                                        }`}
+                                    >
+                                        {answers[currentStep] === option && (
+                                            <span className="w-1 h-1 rounded-full bg-white"></span>
+                                        )}
+                                    </span>
+                                    <span
+                                        className={`font-bold ${
+                                            answers[currentStep] === option &&
+                                            "text-primary"
+                                        }`}
+                                    >
+                                        {option}
+                                    </span>
+                                </label>
+                            ))}
+                        </div>
+
+                        <div className="mx-auto flex justify-between items-center gap-4">
+                            <button
+                                className="font-bold h-14 border-2 border-overlay flex items-center justify-center px-6 text-primary rounded-default disabled:opacity-50"
+                                onClick={() => handleTransition("prev")}
+                                disabled={currentStep === 0}
+                            >
+                                <LongArrowRight width={21} />
+                            </button>
+
+                            {isLastStep ? (
+                                <button
+                                    className={`font-bold w-full border-2 border-success h-14 flex items-center justify-end px-6 bg-success text-white rounded-default disabled:opacity-50 gap-3 ${
+                                        isSubmitting || isFinishDisabled
+                                            ? "opacity-50 cursor-not-allowed"
+                                            : ""
                                     }`}
+                                    onClick={handleFinish}
+                                    disabled={isSubmitting || isFinishDisabled}
                                 >
-                                    {option}
-                                </span>
-                            </label>
-                        ))}
-                    </div>
-
-                    <div className="mx-auto flex justify-between items-center gap-4">
-                        <button
-                            className="font-bold h-14 border-2 border-overlay flex items-center justify-center px-6 text-primary rounded-default disabled:opacity-50"
-                            onClick={() => handleTransition("prev")}
-                            disabled={currentStep === 0}
-                        >
-                            <LongArrowRight width={21} />
-                        </button>
-
-                        {isLastStep ? (
-                            <button
-                                className={`font-bold w-full border-2 border-success h-14 flex items-center justify-end px-6 bg-success text-white rounded-default disabled:opacity-50 gap-3 ${
-                                    isSubmitting || isFinishDisabled
-                                        ? "opacity-50 cursor-not-allowed"
-                                        : ""
-                                }`}
-                                onClick={handleFinish}
-                                disabled={isSubmitting || isFinishDisabled}
-                            >
-                                {isSubmitting ? "در حال ارسال..." : "ارسال تست"}
-                                <LongArrowLeft width={21} />
-                            </button>
-                        ) : (
-                            <button
-                                className="font-bold w-full border-2 border-primary h-14 flex items-center justify-end px-6 bg-primary text-white rounded-default disabled:opacity-50 gap-3"
-                                onClick={() => handleTransition("next")}
-                                disabled={isNextDisabled}
-                            >
-                                سوال بعدی
-                                <LongArrowLeft width={21} />
-                            </button>
-                        )}
+                                    {isSubmitting
+                                        ? "در حال ارسال..."
+                                        : "ارسال تست"}
+                                    <LongArrowLeft width={21} />
+                                </button>
+                            ) : (
+                                <button
+                                    className="font-bold w-full border-2 border-primary h-14 flex items-center justify-end px-6 bg-primary text-white rounded-default disabled:opacity-50 gap-3"
+                                    onClick={() => handleTransition("next")}
+                                    disabled={isNextDisabled}
+                                >
+                                    سوال بعدی
+                                    <LongArrowLeft width={21} />
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </>
             ) : (
