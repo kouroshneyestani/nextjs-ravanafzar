@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { StepContext } from "../../contexts/StepperContext";
-import { useFetch } from "../../hooks/useFetch";
-import useSubmitData from "../../hooks/useSubmitData";
+import { useFetch, useSubmitData } from "../../hooks";
+import { ProgressBar } from "../../components";
 
 const Stepper = ({ className }) => {
     const { currentStep, nextStep, previousStep } = useContext(StepContext);
@@ -15,6 +15,7 @@ const Stepper = ({ className }) => {
     const [answers, setAnswers] = useState({});
     const [submitStatus, setSubmitStatus] = useState(null); // To track submission status
     const [isTransitioning, setIsTransitioning] = useState(false); // For handling transition effects
+    const [isSurveyComplete, setIsSurveyComplete] = useState(false); // To track survey completion
 
     useEffect(() => {
         // Initialize the answers state with the first option of the first question
@@ -24,6 +25,8 @@ const Stepper = ({ className }) => {
     }, [questions, currentStep]);
 
     const handleTransition = (direction) => {
+        if (isSurveyComplete) return; // Prevent transitions if survey is complete
+
         setIsTransitioning(true);
         setTimeout(() => {
             direction === "next" ? nextStep() : previousStep();
@@ -36,8 +39,6 @@ const Stepper = ({ className }) => {
 
     const currentQuestion = questions[currentStep];
     const isNextDisabled = currentQuestion.required && !answers[currentStep];
-
-    // Determine if the current step is the last one
     const isLastStep = currentStep === questions.length - 1;
     const isFinishDisabled =
         isLastStep && currentQuestion.required && !answers[currentStep];
@@ -50,6 +51,7 @@ const Stepper = ({ className }) => {
         const result = await submitData(answers);
         if (result) {
             setSubmitStatus("success");
+            setIsSurveyComplete(true);
         } else {
             setSubmitStatus("error");
         }
@@ -63,6 +65,13 @@ const Stepper = ({ className }) => {
                     : "scale-100 opacity-100"
             }`}
         >
+            <ProgressBar
+                currentStep={
+                    isSurveyComplete ? questions.length - 1 : currentStep
+                }
+                totalSteps={questions.length}
+                className="mb-4"
+            />
             {currentStep < questions.length ? (
                 <>
                     <header className="flex flex-col gap-4">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useSubmitData = (url) => {
+export const useSubmitData = (url) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
@@ -34,5 +34,3 @@ const useSubmitData = (url) => {
 
     return { isSubmitting, response, error, submitData };
 };
-
-export default useSubmitData;
