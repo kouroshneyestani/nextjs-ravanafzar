@@ -6,7 +6,7 @@ const { i18n } = config;
 const nextConfig = {
     i18n,
     images: {
-        domains: ["i.sstatic.net"],
+        domains: ["images.unsplash.com"],
     },
     reactStrictMode: true,
 };
