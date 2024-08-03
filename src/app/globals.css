@@ -24,7 +24,9 @@
     --afc-primary-color: #107EEB;
     --afc-secondary-color: #2d3748;
     
-    --afc-success-color: rgb(43, 255, 0);
+    --afc-danger-color: red;
+    --afc-warning-color: orange;
+    --afc-success-color: green;
 }
 /* 
  * Colors

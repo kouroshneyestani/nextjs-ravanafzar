@@ -119,7 +119,7 @@ const Stepper = ({ className }) => {
                         ))}
                     </div>
 
-                    <div className="flex justify-between items-center gap-4">
+                    <div className="mx-auto flex justify-between items-center gap-4">
                         <button
                             className="font-bold h-14 border-2 border-overlay flex items-center justify-center px-6 text-primary rounded-default disabled:opacity-50"
                             onClick={() => handleTransition("prev")}
@@ -168,18 +168,18 @@ const Stepper = ({ className }) => {
                         {isSubmitting ? "Submitting..." : "Finish"}
                     </button>
                     {submitStatus === "success" && (
-                        <div className="mt-4 text-green-500">
+                        <div className="mt-4 text-success">
                             <div>Submission successful!</div>
                             <div>{response}</div>
                         </div>
                     )}
                     {submitStatus === "error" && (
-                        <div className="mt-4 text-red-500">
+                        <div className="mt-4 text-danger">
                             <div>Submission failed. Please try again.</div>
                         </div>
                     )}
                     {submitError && (
-                        <div className="mt-4 text-red-500">
+                        <div className="mt-4 text-danger">
                             Error: {submitError}
                         </div>
                     )}
