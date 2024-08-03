@@ -4,7 +4,7 @@ const RadioBox = ({ option, isSelected, onChange, name }) => {
     return (
         <label
             className={`w-full h-14 flex gap-4 items-center cursor-pointer px-4 border-2 rounded-3xl ${
-                isSelected ? "border-primary" : ""
+                isSelected ? "border-primary" : "border-gray"
             }`}
         >
             <input
