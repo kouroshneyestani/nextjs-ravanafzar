@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { StepContext } from "../../contexts/StepperContext";
 import { useFetch } from "../../hooks/useFetch";
 import useSubmitData from "../../hooks/useSubmitData";
@@ -14,6 +14,13 @@ const Stepper = ({ className }) => {
     } = useSubmitData("/submit-endpoint"); // Replace with your actual endpoint
     const [answers, setAnswers] = useState({});
     const [submitStatus, setSubmitStatus] = useState(null); // To track submission status
+
+    useEffect(() => {
+        // Initialize the answers state with the first option of the first question
+        if (questions && questions.length > 0 && currentStep === 0) {
+            setAnswers({ [0]: questions[0].options[0] });
+        }
+    }, [questions, currentStep]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error loading questions</div>;
@@ -44,7 +51,7 @@ const Stepper = ({ className }) => {
             {currentStep < questions.length ? (
                 <>
                     <header className="flex flex-col gap-4">
-                        <div className="flex gap-2 text-lg font-bold">
+                        <div className="flex gap-2 text-lg font-bold text-primary">
                             <span className="text-xl">پرسش</span>
                             <div className="flex gap-1">
                                 <span>{currentStep + 1}</span>
@@ -60,7 +67,7 @@ const Stepper = ({ className }) => {
                         {currentQuestion.options.map((option, index) => (
                             <label
                                 key={index}
-                                className={`w-full h-14 flex gap-4 items-center cursor-pointer px-4 border-2 rounded-2xl ${answers[currentStep] === option ? "border-primary" : ""}`}
+                                className={`w-full h-14 flex gap-4 items-center cursor-pointer px-4 border-2 rounded-3xl ${answers[currentStep] === option ? "border-primary" : ""}`}
                             >
                                 <input
                                     type="radio"
@@ -147,6 +154,7 @@ const Stepper = ({ className }) => {
         </div>
     );
 };
+
 const LongArrowLeft = ({
     width = "100%",
     height = "100%",

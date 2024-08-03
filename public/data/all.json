@@ -1,7 +1,7 @@
 [
     {
         "required": true,
-        "options": ["Paris", "London", "Rome", "Berlin", "Madrid"],
+        "options": ["کاملا مخالفم", "مخالفم", "مطمئن نیستم", "موافقم", "کاملا موافقم"],
         "id": 1,
         "domain": "N",
         "facet": 1,
@@ -10,7 +10,7 @@
     },
     {
         "required": true,
-        "options": ["Paris", "London", "Rome", "Berlin", "Madrid"],
+        "options": ["کاملا مخالفم", "مخالفم", "مطمئن نیستم", "موافقم", "کاملا موافقم"],
         "id": 2,
         "domain": "E",
         "facet": 1,
@@ -19,7 +19,7 @@
     },
     {
         "required": true,
-        "options": ["Paris", "London", "Rome", "Berlin", "Madrid"],
+        "options": ["کاملا مخالفم", "مخالفم", "مطمئن نیستم", "موافقم", "کاملا موافقم"],
         "id": 3,
         "domain": "O",
         "facet": 1,
@@ -28,7 +28,7 @@
     },
     {
         "required": true,
-        "options": ["Paris", "London", "Rome", "Berlin", "Madrid"],
+        "options": ["کاملا مخالفم", "مخالفم", "مطمئن نیستم", "موافقم", "کاملا موافقم"],
         "id": 4,
         "domain": "A",
         "facet": 1,
