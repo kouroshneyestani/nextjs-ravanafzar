@@ -15,6 +15,7 @@ module.exports = {
                 primary: "var(--afc-primary-color)",
                 secondary: "var(--afc-secondary-color)",
                 overlay: "var(--afc-overlay-color)",
+                success: "var(--afc-success-color)",
             },
             borderRadius: {
                 default: "6px",
