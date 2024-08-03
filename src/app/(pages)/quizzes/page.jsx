@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
+    Header1,
     SpaceBar,
     Container,
     TomanIcon,
@@ -14,7 +15,7 @@ const tests = [
     {
         id: 1,
         price: 180000,
-        image: "https://i.sstatic.net/y9DpT.jpg",
+        image: "/images/img (1).jpg",
         title: "تست NEO، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         questions: "240",
@@ -26,7 +27,7 @@ const tests = [
     {
         id: 2,
         price: 150000,
-        image: "https://i.sstatic.net/y9DpT.jpg",
+        image: "/images/img (2).jpg",
         title: "تست MBTI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "شناسایی 16 تیپ شخصیتی مختلف بر اساس چهار بعد اصلی شخصیت",
         questions: "93",
@@ -38,7 +39,7 @@ const tests = [
     {
         id: 3,
         price: 200000,
-        image: "https://i.sstatic.net/y9DpT.jpg",
+        image: "/images/img (3).jpg",
         title: "تست MBTI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle:
             "اندازه‌گیری توانایی‌های شناختی از جمله استدلال، حافظه، و حل مسئله",
@@ -51,7 +52,7 @@ const tests = [
     {
         id: 4,
         price: 170000,
-        image: "https://i.sstatic.net/y9DpT.jpg",
+        image: "/images/img (4).jpg",
         title: "تست MMPI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle:
             "ارزیابی ویژگی‌های روانشناختی و اختلالات شخصیتی از طریق سوالات گسترده",
@@ -64,7 +65,7 @@ const tests = [
     {
         id: 1,
         price: 180000,
-        image: "https://i.sstatic.net/y9DpT.jpg",
+        image: "/images/img (5).jpg",
         title: "تست NEO، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         questions: "240",
@@ -76,7 +77,7 @@ const tests = [
     {
         id: 2,
         price: 150000,
-        image: "https://i.sstatic.net/y9DpT.jpg",
+        image: "/images/img (6).jpg",
         title: "تست MBTI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "شناسایی 16 تیپ شخصیتی مختلف بر اساس چهار بعد اصلی شخصیت",
         questions: "93",
@@ -90,24 +91,26 @@ const tests = [
 export default function Page() {
     return (
         <div>
+            <Header1 />
+            <div className="h-60 bg-overlay"></div>
             <SpaceBar pt={null} />
             <Container>
                 <div className="flex flex-col md:flex-row gap-8">
                     <aside className="w-1/6">
                         <ul className="flex flex-col gap-2">
-                            <li className="flex items-center justify-center font-bold text-white bg-primary rounded-default p-4">
+                            <li className="flex items-center justify-center font-bold bg-overlay rounded-default p-4">
                                 <Link href="#">
-                                    <span>تست های روان شناسی</span>
+                                    <span># روان شناسی</span>
                                 </Link>
                             </li>
-                            <li className="flex items-center justify-center font-bold text-white bg-primary rounded-default p-4">
+                            <li className="flex items-center justify-center font-bold bg-overlay rounded-default p-4">
                                 <Link href="#">
-                                    <span>تست های خود شناسی</span>
+                                    <span># خود شناسی</span>
                                 </Link>
                             </li>
-                            <li className="flex items-center justify-center font-bold text-white bg-primary rounded-default p-4">
+                            <li className="flex items-center justify-center font-bold bg-overlay rounded-default p-4">
                                 <Link href="#">
-                                    <span>تست های رشد فردی</span>
+                                    <span># رشد فردی</span>
                                 </Link>
                             </li>
                         </ul>
@@ -127,7 +130,7 @@ export default function Page() {
                                                 />
                                             </Link>
                                         </div>
-                                        <div className="flex flex-col gap-2">
+                                        <div className="flex flex-col gap-2 mt-2">
                                             <h3 className="text-xl font-bold hover:text-primary transition-colors duration-100">
                                                 <Link
                                                     href={`/quizzes/${test.id}`}
@@ -148,7 +151,7 @@ export default function Page() {
                                                                 width={15}
                                                                 height={15}
                                                             />
-                                                            <span class="flex gap-1">
+                                                            <span className="flex gap-1">
                                                                 <span>
                                                                     {
                                                                         test.readingTime
@@ -164,7 +167,7 @@ export default function Page() {
                                                                 width={15}
                                                                 height={15}
                                                             />
-                                                            <span class="flex gap-1">
+                                                            <span className="flex gap-1">
                                                                 <span>
                                                                     {
                                                                         test.questions
