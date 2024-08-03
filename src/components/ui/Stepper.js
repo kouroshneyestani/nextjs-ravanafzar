@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { StepContext } from "../../contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
 import {
+    Button,
     Loading,
     ProgressBar,
     LongArrowLeft,
@@ -16,7 +17,7 @@ const Stepper = ({ className }) => {
         response,
         error: submitError,
         submitData,
-    } = useSubmitData("/submit-endpoint"); // Replace with your actual endpoint
+    } = useSubmitData("/submit-endpoint");
     const [answers, setAnswers] = useState({});
     const [submitStatus, setSubmitStatus] = useState(null); // To track submission status
     const [isTransitioning, setIsTransitioning] = useState(false); // For handling transition effects
@@ -143,21 +144,18 @@ const Stepper = ({ className }) => {
                         </div>
 
                         <div className="mx-auto flex justify-between items-center gap-4">
-                            <button
-                                className="font-bold h-14 border-2 border-overlay flex items-center justify-center px-6 text-primary rounded-default disabled:opacity-50"
+                            <Button
+                                color="primary"
                                 onClick={() => handleTransition("prev")}
                                 disabled={currentStep === 0}
                             >
+                                سوال قبلی
                                 <LongArrowRight width={21} />
-                            </button>
+                            </Button>
 
                             {isLastStep ? (
-                                <button
-                                    className={`font-bold w-full border-2 border-success h-14 flex items-center justify-end px-6 bg-success text-white rounded-default disabled:opacity-50 gap-3 ${
-                                        isSubmitting || isFinishDisabled
-                                            ? "opacity-50 cursor-not-allowed"
-                                            : ""
-                                    }`}
+                                <Button
+                                    color="success"
                                     onClick={handleFinish}
                                     disabled={isSubmitting || isFinishDisabled}
                                 >
@@ -165,48 +163,37 @@ const Stepper = ({ className }) => {
                                         ? "در حال پردازش..."
                                         : "دیدن نتایج"}
                                     <LongArrowLeft width={21} />
-                                </button>
+                                </Button>
                             ) : (
-                                <button
-                                    className="font-bold w-full border-2 border-primary h-14 flex items-center justify-end px-6 bg-primary text-white rounded-default disabled:opacity-50 gap-3"
+                                <Button
+                                    color="primary"
                                     onClick={() => handleTransition("next")}
                                     disabled={isNextDisabled}
                                 >
                                     سوال بعدی
                                     <LongArrowLeft width={21} />
-                                </button>
+                                </Button>
                             )}
                         </div>
                     </div>
                 </>
             ) : (
                 <div className="flex flex-col items-center">
-                    <div className="text-lg font-bold mb-4">Finish Survey</div>
-                    <button
-                        className={`bg-green-500 text-white px-4 py-2 rounded ${
-                            isSubmitting || isFinishDisabled
-                                ? "opacity-50 cursor-not-allowed"
-                                : ""
-                        }`}
-                        onClick={handleFinish}
-                        disabled={isSubmitting || isFinishDisabled}
-                    >
-                        {isSubmitting ? "Submitting..." : "Finish"}
-                    </button>
+                    <div className="text-lg font-bold mb-4">نتایج تست</div>
                     {submitStatus === "success" && (
                         <div className="mt-4 text-success">
-                            <div>Submission successful!</div>
+                            <div>با موفقیت ثبت شد.</div>
                             <div>{response}</div>
                         </div>
                     )}
                     {submitStatus === "error" && (
                         <div className="mt-4 text-danger">
-                            <div>Submission failed. Please try again.</div>
+                            <div>مشکلی پیش آمده. لطفا دوباره امتحان کنید.</div>
                         </div>
                     )}
                     {submitError && (
                         <div className="mt-4 text-danger">
-                            Error: {submitError}
+                            ارور: {submitError}
                         </div>
                     )}
                 </div>

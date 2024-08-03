@@ -1,4 +1,5 @@
+import Button from "./Button";
 import Loading from "./Loading";
 import ProgressBar from "./ProgressBar";
 
-export { Loading, ProgressBar };
+export { Button, Loading, ProgressBar };
