@@ -1,3 +1,4 @@
+import Header1 from "./header/Header1";
 import SpaceBar from "./SpaceBar";
 
-export { SpaceBar };
+export { Header1, SpaceBar };
