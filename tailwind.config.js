@@ -15,6 +15,8 @@ module.exports = {
                 primary: "var(--afc-primary-color)",
                 secondary: "var(--afc-secondary-color)",
                 overlay: "var(--afc-overlay-color)",
+                
+                gray: "var(--afc-gray-color)",
                 danger: "var(--afc-danger-color)",
                 warning: "var(--afc-warning-color)",
                 success: "var(--afc-success-color)",
