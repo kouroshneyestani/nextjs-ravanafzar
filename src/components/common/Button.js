@@ -1,7 +1,7 @@
 import React from "react";
 
 const Button = ({
-    color,
+    color = "primary",
     children,
     className,
     onClick,
