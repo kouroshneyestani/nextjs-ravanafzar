@@ -22,7 +22,7 @@ export default function Layout({ children }) {
 
     return (
         <section>
-            <header>
+            {/* <header>
                 <nav>
                     <ul>
                         {links.map((link, index) => (
@@ -39,7 +39,7 @@ export default function Layout({ children }) {
                         ))}
                     </ul>
                 </nav>
-            </header>
+            </header> */}
 
             {children}
         </section>
