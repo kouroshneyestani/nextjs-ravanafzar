@@ -5,7 +5,7 @@ const Button = ({
     children,
     className,
     onClick,
-    disabled,
+    disabled = true,
     type = "button",
 }) => {
     return (
