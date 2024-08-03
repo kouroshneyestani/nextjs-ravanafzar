@@ -1,12 +1,11 @@
 "use client";
 
-import Stepper from "../../../components/ui/Stepper";
+import Link from "next/link";
 
 export default function Page() {
     return (
         <div>
-            <Stepper className="max-w-xl h-screen flex flex-col gap-12 justify-between mx-auto p-6 pt-16 select-none" />
+            <Link href="/quizzes/1">Quiz 1</Link>
         </div>
     );
 }
-
