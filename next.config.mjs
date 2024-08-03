@@ -5,6 +5,9 @@ const { i18n } = config;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     i18n,
+    images: {
+        domains: ["i.sstatic.net"],
+    },
     reactStrictMode: true,
 };
 
