@@ -114,7 +114,7 @@ function TestIntro({
                     <aside className="w-3/4">
                         <div className="relative">
                             <Image
-                                src="/images/tests/1.png"
+                                src="/images/quizzes/1.png"
                                 width="400"
                                 height="300"
                                 alt="تست"

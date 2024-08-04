@@ -2,7 +2,7 @@ export const quizzes = [
     {
         id: 1,
         price: 180000,
-        image: "/images/img (1).jpg",
+        image: "/images/quizzes/1.png",
         title: "تست NEO، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         questions: "240",
@@ -14,7 +14,7 @@ export const quizzes = [
     {
         id: 2,
         price: 150000,
-        image: "/images/img (2).jpg",
+        image: "/images/quizzes/2.png",
         title: "تست MBTI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "شناسایی 16 تیپ شخصیتی مختلف بر اساس چهار بعد اصلی شخصیت",
         questions: "93",
@@ -26,7 +26,7 @@ export const quizzes = [
     {
         id: 3,
         price: 200000,
-        image: "/images/img (3).jpg",
+        image: "/images/quizzes/3.png",
         title: "تست MBTI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle:
             "اندازه‌گیری توانایی‌های شناختی از جمله استدلال، حافظه، و حل مسئله",
@@ -39,7 +39,7 @@ export const quizzes = [
     {
         id: 4,
         price: 170000,
-        image: "/images/img (4).jpg",
+        image: "/images/quizzes/4.png",
         title: "تست MMPI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle:
             "ارزیابی ویژگی‌های روانشناختی و اختلالات شخصیتی از طریق سوالات گسترده",
@@ -52,7 +52,7 @@ export const quizzes = [
     {
         id: 5,
         price: 180000,
-        image: "/images/img (5).jpg",
+        image: "/images/quizzes/5.png",
         title: "تست NEO، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         questions: "240",
@@ -64,7 +64,7 @@ export const quizzes = [
     {
         id: 6,
         price: 150000,
-        image: "/images/img (6).jpg",
+        image: "/images/quizzes/6.png",
         title: "تست MBTI، ارزیابی پنج بعد اصلی شخصیت شامل برون‌گرایی، وظیفه‌شناسی",
         subtitle: "شناسایی 16 تیپ شخصیتی مختلف بر اساس چهار بعد اصلی شخصیت",
         questions: "93",
