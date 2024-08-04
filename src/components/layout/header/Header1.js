@@ -133,8 +133,11 @@ export default function Header() {
                 <div className="w-full h-20 flex items-center z-50">
                     <Container>
                         <div className="flex items-center justify-between">
-                            <LogoSVG />
-                            <nav>
+                            <div className="flex items-center gap-5">
+                                <ToogleMobileMenu className="flex lg:hidden" />
+                                <LogoSVG className="hidden lg:flex" />
+                            </div>
+                            <nav className="hidden lg:block">
                                 <ul
                                     className="flex items-center gap-10 font-bold"
                                     dir="rtl"
@@ -182,3 +185,18 @@ export default function Header() {
         </header>
     );
 }
+
+const ToogleMobileMenu = (props) => {
+    return (
+        <>
+            <button
+                {...props}
+                className={`w-10 h-10 cursor-pointer flex-col items-center justify-center gap-2 ${props.className}`}
+            >
+                {[1, 2, 3].map((item) => (
+                    <span key={item} className="w-full h-[3px] bg-black"></span>
+                ))}
+            </button>
+        </>
+    );
+};
