@@ -134,7 +134,7 @@ const Stepper = ({ className }) => {
                             </Button>
                         ) : (
                             <Button
-                                color="primary"
+                                color="success"
                                 onClick={handleFinish}
                                 disabled={isSubmitting || isFinishDisabled}
                             >
