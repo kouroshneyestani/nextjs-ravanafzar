@@ -365,9 +365,9 @@ export const ProfileIcon = ({
     </svg>
 );
 
-export const LogoSVG = () => {
+export const LogoSVG = (props) => {
     return (
-        <div className="flex items-center">
+        <div {...props} className="flex items-center">
             <span className="w-10 h-10 bg-primary rounded-full right-2 relative before:w-full before:h-full before:relative before:flex before:rounded-full before:-left-2 before:bg-yellow-400"></span>
             <span className="text-xl font-bold relative -right-2">
                 روان ابزار
