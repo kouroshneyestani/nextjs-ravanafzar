@@ -14,18 +14,25 @@ export default function Card({
 }) {
     return (
         <div className="flex flex-col gap-4">
-            {false && (
-                <div className="relative pt-[69%] overflow-hidden rounded-default">
-                    <Link href={`/quizzes/${id}`}>
-                        <Image fill alt={title} src={image} objectFit="cover" />
-                    </Link>
+            <div className="flex items-center gap-4">
+                <div>
+                    <div className="w-20 h-20 relative overflow-hidden rounded-default">
+                        <Link href={`/quizzes/${id}`}>
+                            <Image
+                                fill
+                                alt={title}
+                                src={image}
+                                objectFit="cover"
+                            />
+                        </Link>
+                    </div>
                 </div>
-            )}
-            <div className="flex flex-col gap-2 mt-2">
-                <h3 className="text-xl font-bold hover:text-primary transition-colors duration-100">
-                    <Link href={`/quizzes/${id}`}>{title}</Link>
-                </h3>
-                <p className="text-lg hidden">{subtitle}</p>
+                <div className="flex flex-col gap-2 mt-2">
+                    <h3 className="text-xl font-bold hover:text-primary transition-colors duration-100">
+                        <Link href={`/quizzes/${id}`}>{title}</Link>
+                    </h3>
+                    <p>{subtitle}</p>
+                </div>
             </div>
             <div className="pt-3 pb-3">
                 <div className="flex items-center justify-around gap-10 text-sm">
@@ -47,7 +54,7 @@ export default function Card({
                             </div>
                         </div>
                     </div>
-                    <span className="w-[1px] h-10 flex bg-gray" />
+                    <span className="w-[1px] h-10 flex bg-overlay" />
                     <div className="flex flex-col gap-1">
                         {off ? (
                             <>
@@ -80,7 +87,7 @@ export default function Card({
                     </div>
                 </div>
             </div>
-            <span className="w-full h-[1px] flex bg-gray" />
+            <span className="w-full h-[1px] flex bg-overlay" />
         </div>
     );
 }

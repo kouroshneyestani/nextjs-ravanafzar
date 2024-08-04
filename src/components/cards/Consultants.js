@@ -17,7 +17,7 @@ export default function Card({
             <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
                     <div className="w-20 h-20 relative  overflow-hidden rounded-default">
-                        <Link href={`/quizzes/${id}`}>
+                        <Link href={`/consultants/${id}`}>
                             <Image
                                 fill
                                 alt={title}
@@ -53,7 +53,7 @@ export default function Card({
                                 </div>
                             </div>
                         </div>
-                        <span className="w-[1px] h-10 flex bg-gray" />
+                        <span className="w-[1px] h-10 flex bg-overlay" />
                         <div className="flex flex-col gap-1">
                             {off ? (
                                 <>
@@ -86,7 +86,7 @@ export default function Card({
                         </div>
                     </div>
                 </div>
-                <span className="w-full h-[1px] flex bg-gray" />
+                <span className="w-full h-[1px] flex bg-overlay" />
             </div>
         </div>
     );
