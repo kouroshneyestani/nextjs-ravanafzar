@@ -33,7 +33,7 @@ const data = [
 export default function Page() {
     return (
         <div className="w-full flex gap-10 b-red-300">
-            <aside className="w-2/6">
+            <aside className="w-2/5">
                 <div className="top-10 sticky">
                     {data.map((item) => (
                         <div key={item.id}>
@@ -127,12 +127,12 @@ export default function Page() {
                                     </div>
                                 </div>
                                 <span className="w-full h-[1px] flex bg-gray" />
+                                <Button color="primary" className="w-full">
+                                    <span>رزرور وقت مشاوره</span>
+                                </Button>
                             </div>
                         </div>
                     ))}
-                    <Button color="primary" className="w-full">
-                        <span>رزرور وقت مشاوره</span>
-                    </Button>
                 </div>
             </aside>
             <main className="w-5/6">
@@ -146,16 +146,12 @@ export default function Page() {
                                 سوابقه و مشخصات{" "}
                             </li>
                             <li className="h-16 px-10 font-bold flex items-center justify-center border-b-4 border-transparent">
-                                امتیاز کاربران
-                            </li>
-                            <li className="h-16 px-10 font-bold flex items-center justify-center border-b-4 border-transparent">
                                 رزومه و افتخارات
                             </li>
                         </ul>
                     </nav>
                 </div>
             </main>
-            <aside></aside>
         </div>
     );
 }
