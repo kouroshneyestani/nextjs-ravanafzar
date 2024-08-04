@@ -14,11 +14,13 @@ export default function Card({
 }) {
     return (
         <div className="flex flex-col gap-4">
-            <div className="relative pt-[69%] overflow-hidden rounded-default">
-                <Link href={`/quizzes/${id}`}>
-                    <Image fill alt={title} src={image} objectFit="cover" />
-                </Link>
-            </div>
+            {false && (
+                <div className="relative pt-[69%] overflow-hidden rounded-default">
+                    <Link href={`/quizzes/${id}`}>
+                        <Image fill alt={title} src={image} objectFit="cover" />
+                    </Link>
+                </div>
+            )}
             <div className="flex flex-col gap-2 mt-2">
                 <h3 className="text-xl font-bold hover:text-primary transition-colors duration-100">
                     <Link href={`/quizzes/${id}`}>{title}</Link>
