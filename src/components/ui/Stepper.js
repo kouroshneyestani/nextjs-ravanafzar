@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { StepperContext } from "../../contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
@@ -77,7 +79,7 @@ const Stepper = ({ className }) => {
     return (
         <div className="relative">
             <ProgressBar
-                className="absolute top-0 left-0"
+                className="fixed top-0 left-0"
                 totalSteps={questions.length}
                 currentStep={
                     state.isSurveyComplete ? questions.length - 1 : currentStep
