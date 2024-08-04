@@ -1,6 +1,7 @@
 "use client"; // This directive marks the file as a Client Component
 
-import { appWithTranslation } from "next-i18next";
+import { usePathname } from "next/navigation";
+import { Header1, SpaceBar, Container } from "@components";
 
 // Import styles
 import "./globals.css";
@@ -10,11 +11,33 @@ function RootLayout({ children }) {
     const lng = "fa";
     const dir = "rtl";
 
+    const pathname = usePathname();
+    const condition = !(
+        pathname.startsWith("/quizzes/") && pathname.split("/").length === 3
+    );
+
     return (
         <html lang={lng} dir={dir}>
-            <body className="font-1">{children}</body>
+            <body className="font-1">
+                {condition ? (
+                    <>
+                        <Header1 />
+                        <div>
+                            <SpaceBar pt={null} />
+                            <Container>
+                                <div className="flex flex-col md:flex-row gap-8">
+                                    {children}
+                                </div>
+                            </Container>
+                            <SpaceBar />
+                        </div>
+                    </>
+                ) : (
+                    children
+                )}
+            </body>
         </html>
     );
 }
 
-export default appWithTranslation(RootLayout);
+export default RootLayout;
