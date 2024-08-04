@@ -2,15 +2,12 @@ import config from "./next-i18next.config.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const { i18n } = config;
-
 // Convert the import.meta.url to __dirname equivalent
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    i18n,
     images: {
         domains: ["images.unsplash.com"],
     },
@@ -19,6 +16,7 @@ const nextConfig = {
         config.resolve.alias = {
             ...config.resolve.alias,
             "@app": path.resolve(__dirname, "src/app"),
+            "@data": path.resolve(__dirname, "src/data"),
             "@components": path.resolve(__dirname, "src/components"),
         };
         return config;
