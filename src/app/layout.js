@@ -24,11 +24,9 @@ function RootLayout({ children }) {
                         <Header1 />
                         <div>
                             <SpaceBar pt={null} />
-                            <Container>
-                                <div className="flex flex-col md:flex-row gap-8">
-                                    {children}
-                                </div>
-                            </Container>
+                            <div className="flex flex-col md:flex-row gap-8">
+                                {children}
+                            </div>
                             <SpaceBar />
                         </div>
                     </>
