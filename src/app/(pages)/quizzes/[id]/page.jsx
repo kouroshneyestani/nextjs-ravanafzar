@@ -66,7 +66,7 @@ function TestIntro({
                             <ul className="gap-10 flex items-center mb-10">
                                 {questions && (
                                     <li className="flex flex-col gap-4">
-                                        <span class="font-bold text-lg flex items-center gap-2">
+                                        <span className="font-bold text-lg flex items-center gap-2">
                                             <BarChartIcon />
                                             <span className="mt-2">
                                                 تعداد سوالات
@@ -77,7 +77,7 @@ function TestIntro({
                                 )}
                                 {time && (
                                     <li className="flex flex-col gap-4">
-                                        <span class="font-bold text-lg flex items-center gap-2">
+                                        <span className="font-bold text-lg flex items-center gap-2">
                                             <ClockIcon />
                                             <span>زمان مورد نیاز</span>
                                         </span>
@@ -86,7 +86,7 @@ function TestIntro({
                                 )}
                                 {ages && (
                                     <li className="flex flex-col gap-4">
-                                        <span class="font-bold text-lg flex items-center gap-2">
+                                        <span className="font-bold text-lg flex items-center gap-2">
                                             <ProfileIcon />
                                             <span>رده سنسی</span>
                                         </span>
