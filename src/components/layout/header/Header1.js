@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
     Container,
-    ThemeSwitcher,
     StarIcon,
     ProfileIcon,
     SettingsIcon,
@@ -27,7 +26,7 @@ const navItems = [
         text: "تست ها",
         options: [
             {
-                text: "تست NEO",
+                text: "تست شماره 1",
                 href: "/quizzes/1",
             },
             {
@@ -65,7 +64,7 @@ export default function Header() {
     };
 
     const renderDropdown = (options) => (
-        <ul className="absolute right-0 shadow-lg py-3 w-48 z-10 rounded-default bg-background text-md">
+        <ul className="absolute right-0 shadow py-3 w-48 z-10 rounded-default bg-background text-md">
             {options.map((option, index) => (
                 <li key={index}>
                     <Link href={option.href}>
@@ -79,7 +78,7 @@ export default function Header() {
     );
 
     const renderProfileDropdown = () => (
-        <ul className="flex flex-col gap-2 absolute -left-6 top-full w-44 shadow-lg py-3 z-10 rounded-default bg-background text-md">
+        <ul className="flex flex-col gap-2 absolute -left-6 top-full w-44 shadow py-3 z-10 rounded-default bg-background text-md">
             <li className="px-4">
                 <Link href="/settings">
                     <div className="flex items-center gap-3">
