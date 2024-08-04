@@ -326,7 +326,11 @@ export const ShineIcon = ({
     </svg>
 );
 
-export const MoonIcon = ({ width = 24, height = 24, color = "currentColor" }) => (
+export const MoonIcon = ({
+    width = 24,
+    height = 24,
+    color = "currentColor",
+}) => (
     <svg
         focusable="false"
         aria-hidden="true"
@@ -361,3 +365,13 @@ export const ProfileIcon = ({
     </svg>
 );
 
+export const LogoSVG = () => {
+    return (
+        <div className="flex items-center">
+            <span className="w-10 h-10 bg-primary rounded-full right-2 relative before:w-full before:h-full before:relative before:flex before:rounded-full before:-left-2 before:bg-yellow-400"></span>
+            <span className="text-xl font-bold relative -right-2">
+                روان ابزار
+            </span>
+        </div>
+    );
+};

@@ -7,6 +7,7 @@ import {
     ProfileIcon,
     SettingsIcon,
     PowerOffIcon,
+    LogoSVG,
 } from "../../../components";
 import Link from "next/link";
 
@@ -114,24 +115,25 @@ export default function Header() {
         </ul>
     );
 
+    const headerTopBarTest =
+        "برای دریافت جدیدترین تخفیف ها پیج اینستاگرام ما را فالو کنید";
+
     return (
-        <header className="h-28">
+        <header
+            className={`block relative ${headerTopBarTest ? "h-[80px]" : "h-20"}`}
+        >
             <div className="top-0 left-0 fixed w-full bg-background z-50">
-                <div className="w-full h-10 flex items-center justify-center text-center bg-primary">
-                    <span className="font-bold text-sm text-white mx-auto">
-                        برای دریافت جدیدترین تخفیف ها پیج اینستاگرام ما را فالو
-                        کنید
-                    </span>
-                </div>
-                <div className="flex items-center justify-center">
+                {headerTopBarTest && (
+                    <div className="w-full h-10 flex items-center justify-center text-center bg-primary">
+                        <span className="font-bold text-sm text-white mx-auto">
+                            {headerTopBarTest}
+                        </span>
+                    </div>
+                )}
+                <div className="w-full h-20 flex items-center z-50">
                     <Container>
                         <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <span className="w-10 h-10 bg-primary rounded-full right-2 relative before:w-full before:h-full before:relative before:flex before:rounded-full before:-left-2 before:bg-yellow-400"></span>
-                                <span className="text-xl font-bold relative -right-2">
-                                    روان ابزار
-                                </span>
-                            </div>
+                            <LogoSVG />
                             <nav>
                                 <ul
                                     className="flex items-center gap-10 font-bold"
