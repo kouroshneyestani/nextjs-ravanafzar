@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { StepProvider } from "../../../../contexts/StepperContext";
 import { SpaceBar, Stepper, Button, TomanIcon } from "../../../../components";
 
 export default function Page() {
@@ -14,22 +15,22 @@ export default function Page() {
 
     return (
         <>
-            <div className="w-full h-screen flex flex-col items-center justify-center">
-                {landing ? (
-                    <TestIntro
-                        title="تست شرمساری از بدن"
-                        subtitle="این مجموعه سوالات به احساس رضایت از ظاهر شما می‌پردازد. توجه داشته باشید که نتایج، به صورت مطلق نشان‌دهنده وجود یا عدم شرمساری از بدن نیست و بهتر است این موضوع با نظارت و همراهی یک متخصص، بررسی شود."
-                        ages={18}
-                        time={180}
-                        questions={80}
-                        price={240000}
-                        onStartTest={startTest}
-                        onAddToCart={onAddToCart}
-                    />
-                ) : (
-                    <Stepper className="max-w-xl w-lvw h-screen flex flex-col gap-10 justify-between mx-auto select-none pb-6 pt-16" />
-                )}
-            </div>
+            {landing ? (
+                <TestIntro
+                    title="تست شرمساری از بدن"
+                    subtitle="این مجموعه سوالات به احساس رضایت از ظاهر شما می‌پردازد. توجه داشته باشید که نتایج، به صورت مطلق نشان‌دهنده وجود یا عدم شرمساری از بدن نیست و بهتر است این موضوع با نظارت و همراهی یک متخصص، بررسی شود."
+                    ages={18}
+                    time={180}
+                    questions={80}
+                    price={240000}
+                    onStartTest={startTest}
+                    onAddToCart={onAddToCart}
+                />
+            ) : (
+                <StepProvider>
+                    <Stepper className="w-lvw max-w-xl h-screen flex flex-col gap-10 justify-end mx-auto select-none " />
+                </StepProvider>
+            )}
         </>
     );
 }
