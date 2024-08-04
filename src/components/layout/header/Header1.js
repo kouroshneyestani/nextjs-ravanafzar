@@ -18,7 +18,7 @@ const navItems = [
         options: [],
     },
     {
-        href: "/talks",
+        href: "/consultants",
         text: "مشاوره",
         options: [],
     },
@@ -84,7 +84,7 @@ export default function Header() {
                 <Link href="/settings">
                     <div className="flex items-center gap-3">
                         <ProfileIcon />
-                        <span>پروفایل</span>
+                        <span className="text-sm">پروفایل</span>
                     </div>
                 </Link>
             </li>
@@ -92,7 +92,7 @@ export default function Header() {
                 <Link href="/settings">
                     <div className="flex items-center gap-3">
                         <SettingsIcon />
-                        <span>تنظیمات</span>
+                        <span className="text-sm">تنظیمات</span>
                     </div>
                 </Link>
             </li>
@@ -100,7 +100,7 @@ export default function Header() {
                 <Link href="/settings">
                     <div className="flex items-center gap-3">
                         <StarIcon />
-                        <span>علاقه مندیها</span>
+                        <span className="text-sm">علاقه مندیها</span>
                     </div>
                 </Link>
             </li>
@@ -108,7 +108,7 @@ export default function Header() {
                 <Link href="/settings">
                     <div className="flex items-center gap-3">
                         <PowerOffIcon />
-                        <span>خروج</span>
+                        <span className="text-sm">خروج</span>
                     </div>
                 </Link>
             </li>
@@ -120,9 +120,9 @@ export default function Header() {
 
     return (
         <header
-            className={`block relative ${headerTopBarTest ? "h-[80px]" : "h-20"}`}
+            className={`block relative  ${headerTopBarTest ? "h-[120px]" : "h-20"}`}
         >
-            <div className="top-0 left-0 fixed w-full bg-background z-50">
+            <div className="top-0 left-0 absolute w-full bg-background z-50">
                 {headerTopBarTest && (
                     <div className="w-full h-10 flex items-center justify-center text-center bg-primary">
                         <span className="font-bold text-sm text-white mx-auto">
@@ -168,7 +168,7 @@ export default function Header() {
                                     onMouseEnter={toggleProfileDropdown}
                                     onMouseLeave={toggleProfileDropdown}
                                 >
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary cursor-pointer text-white">
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary cursor-pointer text-white">
                                         <ProfileIcon />
                                     </div>
                                     {profileDropdownOpen &&
