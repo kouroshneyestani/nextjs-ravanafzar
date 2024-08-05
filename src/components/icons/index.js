@@ -375,3 +375,23 @@ export const LogoSVG = (props) => {
         </div>
     );
 };
+
+export const CaretDownSVG = ({
+    width = 9,
+    height = 9,
+    color = "currentColor",
+}) => {
+    return (
+        <svg
+            fill={color}
+            width={width}
+            height={height}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g>
+                <path d="M21.707,8.707l-9,9a1,1,0,0,1-1.414,0l-9-9A1,1,0,1,1,3.707,7.293L12,15.586l8.293-8.293a1,1,0,1,1,1.414,1.414Z" />
+            </g>
+        </svg>
+    );
+};
