@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useContext, useState, useEffect, useCallback } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { StepperContext } from "@contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
 import {
@@ -44,6 +45,11 @@ const Stepper = ({ className }) => {
         submitData,
     } = useSubmitData("/submit-endpoint");
 
+    // Updated imports for Next.js 14
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    const router = useRouter();
+
     const [answers, setAnswers] = useState({});
     const [state, setState] = useState({
         submitStatus: null,
@@ -80,14 +86,35 @@ const Stepper = ({ className }) => {
             handleTransition("next");
         }
     };
-
+    
     const handleFinish = async () => {
-        const result = await submitData(answers);
-        setState({
-            submitStatus: result ? "success" : "error",
-            isSurveyComplete: !!result,
-            isTransitioning: false,
-        });
+        try {
+            const result = await submitData(answers);
+
+            // Check if the result is successful
+            const isSuccess = response && !error; // Adjust based on your response and error handling logic
+
+            setState({
+                submitStatus: isSuccess ? "success" : "error",
+                isSurveyComplete: isSuccess,
+                isTransitioning: false,
+            });
+
+            // Navigate only if the submission was successful
+            if (isSuccess && router) {
+                const x = "222222"; // Replace with actual logic if needed
+                router.push(
+                    `/responses/${x}?result=${encodeURIComponent(JSON.stringify(result))}`,
+                );
+            }
+        } catch (err) {
+            console.error("Error during submission:", err);
+            setState({
+                submitStatus: "error",
+                isSurveyComplete: false,
+                isTransitioning: false,
+            });
+        }
     };
 
     if (loading) return <Loading />;
