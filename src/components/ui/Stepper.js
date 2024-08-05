@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext, useState, useEffect, useCallback } from "react";
-import { StepperContext } from "../../contexts/StepperContext";
+import { StepperContext } from "@contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
 import {
     Button,
@@ -10,8 +10,30 @@ import {
     ProgressBar,
     LongArrowLeft,
     LongArrowRight,
-} from "../../components";
+} from "@components";
 
+// Results Component
+const Results = ({ submitStatus, response, submitError }) => (
+    <div className="flex flex-col items-center">
+        <div className="text-lg font-bold mb-4">نتایج تست</div>
+        {submitStatus === "success" && (
+            <div className="mt-4 text-success">
+                <div>با موفقیت ثبت شد.</div>
+                <div>{response}</div>
+            </div>
+        )}
+        {submitStatus === "error" && (
+            <div className="mt-4 text-danger">
+                <div>مشکلی پیش آمده. لطفا دوباره امتحان کنید.</div>
+            </div>
+        )}
+        {submitError && (
+            <div className="mt-4 text-danger">ارور: {submitError}</div>
+        )}
+    </div>
+);
+
+// Stepper Component
 const Stepper = ({ className }) => {
     const { currentStep, nextStep, previousStep } = useContext(StepperContext);
     const { data: questions, loading, error } = useFetch("/data/all.json");
@@ -30,7 +52,7 @@ const Stepper = ({ className }) => {
     });
 
     useEffect(() => {
-        if (questions && questions.length > 0 && currentStep === 0) {
+        if (questions?.length && currentStep === 0) {
             setAnswers({ [0]: questions[0].options[0] });
         }
     }, [questions, currentStep]);
@@ -40,6 +62,7 @@ const Stepper = ({ className }) => {
             if (state.isSurveyComplete) return;
 
             setState((prevState) => ({ ...prevState, isTransitioning: true }));
+
             setTimeout(() => {
                 direction === "next" ? nextStep() : previousStep();
                 setState((prevState) => ({
@@ -53,18 +76,18 @@ const Stepper = ({ className }) => {
 
     const handleOptionChange = (value) => {
         setAnswers((prev) => ({ ...prev, [currentStep]: value }));
-        if (currentStep < questions.length - 1) {
+        if (currentStep < questions?.length - 1) {
             handleTransition("next");
         }
     };
 
     const handleFinish = async () => {
         const result = await submitData(answers);
-        setState((prevState) => ({
-            ...prevState,
+        setState({
             submitStatus: result ? "success" : "error",
             isSurveyComplete: !!result,
-        }));
+            isTransitioning: false,
+        });
     };
 
     if (loading) return <Loading />;
@@ -109,7 +132,7 @@ const Stepper = ({ className }) => {
                                 key={index}
                                 option={option}
                                 isSelected={answers[currentStep] === option}
-                                onChange={handleOptionChange}
+                                onChange={() => handleOptionChange(option)}
                                 name={`question-${currentStep}`}
                             />
                         ))}
@@ -156,25 +179,5 @@ const Stepper = ({ className }) => {
         </div>
     );
 };
-
-const Results = ({ submitStatus, response, submitError }) => (
-    <div className="flex flex-col items-center">
-        <div className="text-lg font-bold mb-4">نتایج تست</div>
-        {submitStatus === "success" && (
-            <div className="mt-4 text-success">
-                <div>با موفقیت ثبت شد.</div>
-                <div>{response}</div>
-            </div>
-        )}
-        {submitStatus === "error" && (
-            <div className="mt-4 text-danger">
-                <div>مشکلی پیش آمده. لطفا دوباره امتحان کنید.</div>
-            </div>
-        )}
-        {submitError && (
-            <div className="mt-4 text-danger">ارور: {submitError}</div>
-        )}
-    </div>
-);
 
 export default Stepper;
