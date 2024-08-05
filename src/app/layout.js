@@ -1,7 +1,7 @@
 "use client"; // This directive marks the file as a Client Component
 
 import { usePathname } from "next/navigation";
-import { Header1, SpaceBar, Container } from "@components";
+import { Header1, Footer1, SpaceBar } from "@components";
 
 // Import styles
 import "./globals.css";
@@ -27,8 +27,9 @@ function RootLayout({ children }) {
                             <div className="flex flex-col md:flex-row gap-8">
                                 {children}
                             </div>
-                            <SpaceBar />
+                            <SpaceBar pt={null} />
                         </div>
+                        <Footer1 />
                     </>
                 ) : (
                     children
