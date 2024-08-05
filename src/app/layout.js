@@ -13,7 +13,7 @@ function RootLayout({ children }) {
 
     const pathname = usePathname();
     const condition = !(
-        pathname.startsWith("/quizzes/") && pathname.split("/").length === 3
+        pathname.startsWith("/quizzes/") && pathname.split("/").length > 3
     );
 
     return (
