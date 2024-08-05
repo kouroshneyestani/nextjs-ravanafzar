@@ -13,7 +13,7 @@ export default function Card({
     readingTime,
 }) {
     return (
-        <div key={id}>
+        <div>
             <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
                     <div className="w-20 h-20 relative  overflow-hidden rounded-default">
