@@ -35,7 +35,7 @@ export default function Footer() {
                 <Container>
                     <span className="w-full h-[1px] bg-overlay block mb-8" />
                     <div className="flex flex-col items-center gap-5">
-                        {copyright && <p className="font-bold">{copyright}</p>}
+                        {copyright && <p>{copyright}</p>}
                     </div>
                 </Container>
             </div>
