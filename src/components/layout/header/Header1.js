@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import {
     Container,
@@ -7,9 +8,10 @@ import {
     ProfileIcon,
     SettingsIcon,
     PowerOffIcon,
+    Button,
     LogoSVG,
-} from "../../../components";
-import Link from "next/link";
+    CaretDownSVG,
+} from "@components";
 
 const navItems = [
     {
@@ -53,6 +55,7 @@ const navItems = [
 ];
 
 export default function Header() {
+    const [loggedIn, SetLoggedIn] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(null);
     const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
@@ -154,8 +157,9 @@ export default function Header() {
                                             }
                                         >
                                             <Link href={item.href}>
-                                                <span className="flex items-center text-lg cursor-pointer py-6">
+                                                <span className="flex items-center gap-2 text-lg cursor-pointer py-6">
                                                     {item.text}
+                                                    {item.options.length > 0 && <CaretDownSVG />}
                                                 </span>
                                             </Link>
                                             {item.options.length > 0 &&
@@ -166,17 +170,24 @@ export default function Header() {
                                 </ul>
                             </nav>
                             <div className="flex items-center gap-4">
-                                <div
-                                    className="relative"
-                                    onMouseEnter={toggleProfileDropdown}
-                                    onMouseLeave={toggleProfileDropdown}
-                                >
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary cursor-pointer text-white">
-                                        <ProfileIcon />
+                                {loggedIn ? (
+                                    <div
+                                        className="relative"
+                                        onMouseEnter={toggleProfileDropdown}
+                                        onMouseLeave={toggleProfileDropdown}
+                                    >
+                                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary cursor-pointer text-white">
+                                            <ProfileIcon />
+                                        </div>
+                                        {profileDropdownOpen &&
+                                            renderProfileDropdown()}
                                     </div>
-                                    {profileDropdownOpen &&
-                                        renderProfileDropdown()}
-                                </div>
+                                ) : (
+                                    <Button className="font-1" size="sm">
+                                        <ProfileIcon />
+                                        <span>وارد شوید</span>
+                                    </Button>
+                                )}
                             </div>
                         </div>
                     </Container>
