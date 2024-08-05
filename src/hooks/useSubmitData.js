@@ -24,9 +24,14 @@ export const useSubmitData = (url) => {
             }
 
             const result = await res.json();
-            setResponse(result.message || "Submission successful");
+            if (result && result.success) {
+                // Adjust this based on your API's response structure
+                setResponse(result.message || "Submission successful");
+            } else {
+                throw new Error(result.message || "Submission failed");
+            }
         } catch (err) {
-            setError(err.message);
+            setError(err.message || "An error occurred");
         } finally {
             setIsSubmitting(false);
         }
