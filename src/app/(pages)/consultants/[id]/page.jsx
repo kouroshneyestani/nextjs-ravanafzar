@@ -1,6 +1,7 @@
 "use client";
 
-import { Container, CardConsultants, Button } from "@components";
+import { comments } from "@data";
+import { Container, CardConsultants, Comments, Button } from "@components";
 
 const data = [
     {
@@ -38,8 +39,8 @@ export default function Page() {
                         </div>
                     </aside>
                     <main className="w-5/6">
-                        <div className="w-full h-screen bg-gray-300 border-r-[1px] border-overlay">
-                            <nav className="top-0 sticky">
+                        <div className="w-full min-h-screen bg-gray-300 border-r-[1px] border-overlay">
+                            <nav className="top-0 sticky z-50 bg-background">
                                 <ul className="flex items-end justify-around border-b border-overlay">
                                     <li className="h-16 px-10 font-bold flex items-center justify-center border-b-4 border-primary text-primary">
                                         دیدگاه کاربران
@@ -52,6 +53,11 @@ export default function Page() {
                                     </li>
                                 </ul>
                             </nav>
+                            <div className="p-10">
+                                <div>
+                                    <Comments data={comments} />
+                                </div>
+                            </div>
                         </div>
                     </main>
                 </div>
