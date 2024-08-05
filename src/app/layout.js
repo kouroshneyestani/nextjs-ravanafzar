@@ -37,6 +37,9 @@ function RootLayout({ children }) {
             </body>
         </html>
     );
+
+    // Here will fix the tailwind bugs, because it can't read props-combination classNames.
+    return <div className="bg-secondary bg-success bg-danger bg-warning"></div>;
 }
 
 export default RootLayout;
