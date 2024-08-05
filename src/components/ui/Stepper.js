@@ -86,34 +86,21 @@ const Stepper = ({ className }) => {
             handleTransition("next");
         }
     };
-    
+
     const handleFinish = async () => {
-        try {
-            const result = await submitData(answers);
+        const result = await submitData(answers);
+        setState({
+            submitStatus: result ? "success" : "error",
+            isSurveyComplete: !!result,
+            isTransitioning: false,
+        });
 
-            // Check if the result is successful
-            const isSuccess = response && !error; // Adjust based on your response and error handling logic
-
-            setState({
-                submitStatus: isSuccess ? "success" : "error",
-                isSurveyComplete: isSuccess,
-                isTransitioning: false,
-            });
-
-            // Navigate only if the submission was successful
-            if (isSuccess && router) {
-                const x = "222222"; // Replace with actual logic if needed
-                router.push(
-                    `/responses/${x}?result=${encodeURIComponent(JSON.stringify(result))}`,
-                );
-            }
-        } catch (err) {
-            console.error("Error during submission:", err);
-            setState({
-                submitStatus: "error",
-                isSurveyComplete: false,
-                isTransitioning: false,
-            });
+        // Updated navigation
+        if (router) {
+            const x = "222222";
+            router.push(
+                `/responses/${x}?result=${encodeURIComponent(JSON.stringify(result))}`,
+            );
         }
     };
 
