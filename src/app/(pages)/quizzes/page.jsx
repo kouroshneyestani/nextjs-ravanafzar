@@ -8,9 +8,11 @@ export default function Page() {
         <>
             <main className="w-full">
                 <Container>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden">
                         {quizzes.map((item) => (
-                            <CardQuiz key={item.id} {...item} />
+                            <div className="-mb-1" key={item.id}>
+                                <CardQuiz {...item} />
+                            </div>
                         ))}
                     </div>
                 </Container>

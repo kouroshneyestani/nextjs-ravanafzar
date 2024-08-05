@@ -8,13 +8,13 @@ export default function Home() {
             <div className="w-full flex flex-col gap-24">
                 <section className="w-full">
                     <Container>
-                        <div className="w-full relative pt-[40%]">
-                            <Image
+                        <div className="w-full relative pt-[40%] rounded-default bg-overlay">
+                            {/* <Image
                                 fill
                                 objectFit="cover"
                                 className="rounded-default"
                                 src="/images/hero/hero.jpg"
-                            />
+                            /> */}
                         </div>
                     </Container>
                 </section>

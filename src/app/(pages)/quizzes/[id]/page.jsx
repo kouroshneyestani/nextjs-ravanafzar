@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { StepProvider } from "../../../../contexts/StepperContext";
+import { StepProvider } from "@contexts/StepperContext";
 import {
     Stepper,
     Button,
@@ -10,7 +10,7 @@ import {
     ClockIcon,
     ProfileIcon,
     BarChartIcon,
-} from "../../../../components";
+} from "@components";
 
 export default function Page() {
     const [view, setView] = useState("landing");
