@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext, useState, useEffect, useCallback } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { StepperContext } from "@contexts/StepperContext";
 import { useFetch, useSubmitData } from "../../hooks";
 import {
@@ -45,9 +45,6 @@ const Stepper = ({ className }) => {
         submitData,
     } = useSubmitData("/submit-endpoint");
 
-    // Updated imports for Next.js 14
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
     const router = useRouter();
 
     const [answers, setAnswers] = useState({});
