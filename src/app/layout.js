@@ -16,6 +16,15 @@ function RootLayout({ children }) {
         pathname.startsWith("/quizzes/") && pathname.split("/").length > 3
     );
 
+    const fixTailwindBugs = false;
+
+    if (fixTailwindBugs) {
+        // Here will fix the tailwind bugs, because it can't read props-combination classNames.
+        return (
+            <div className="bg-secondary bg-success bg-danger bg-warning"></div>
+        );
+    }
+
     return (
         <html lang={lng} dir={dir}>
             <body className="font-1">
@@ -37,9 +46,6 @@ function RootLayout({ children }) {
             </body>
         </html>
     );
-
-    // Here will fix the tailwind bugs, because it can't read props-combination classNames.
-    return <div className="bg-secondary bg-success bg-danger bg-warning"></div>;
 }
 
 export default RootLayout;
