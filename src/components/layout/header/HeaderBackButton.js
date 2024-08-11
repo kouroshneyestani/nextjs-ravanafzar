@@ -1,6 +1,6 @@
 import { Container, LogoSVG, BackButton } from "@components";
 
-export default function Header({ href = "#" }) {
+export default function Header({ href = `&quot;` }) {
     return (
         <header>
             <div className="w-full h-20 flex items-center top-0 left-0 fixed z-50">

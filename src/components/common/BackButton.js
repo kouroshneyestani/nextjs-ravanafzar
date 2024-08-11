@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BackIcon } from "@components";
 
-export default function BackButton({ href = "#" }) {
+export default function BackButton({ href = `&quot;` }) {
     return (
         <Link href={href}>
             <div className="flex items-center gap-3 hover:text-primary">

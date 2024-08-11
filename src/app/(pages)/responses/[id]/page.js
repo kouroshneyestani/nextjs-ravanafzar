@@ -15,17 +15,17 @@ const Profile = ({ className }) => {
         const data = [
             {
                 text: "پروفایل",
-                href: "#",
+                href: `&quot;`,
                 icon: <ProfileIcon />,
             },
             {
                 text: "تنظیمات",
-                href: "#",
+                href: `&quot;`,
                 icon: <SettingsIcon />,
             },
             {
                 text: "محصولات",
-                href: "#",
+                href: `&quot;`,
                 icon: <BarChartIcon />,
             },
         ];
