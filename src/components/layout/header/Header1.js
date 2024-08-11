@@ -55,7 +55,7 @@ const navItems = [
 ];
 
 export default function Header() {
-    const [loggedIn, SetLoggedIn] = useState(false);
+    const [loggedIn] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(null);
     const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
