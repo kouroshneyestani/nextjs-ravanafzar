@@ -21,7 +21,6 @@ export default function Page() {
         alert("دروازه پرداخت");
 
         if (id) {
-            console.log(`Navigating to /quizzes/${id}/start`);
             router.push(`/quizzes/${id}/start`);
         }
     };
