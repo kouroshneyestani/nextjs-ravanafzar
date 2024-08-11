@@ -10,6 +10,7 @@ import {
     ClockIcon,
     ProfileIcon,
     BarChartIcon,
+    Container
 } from "@components";
 
 export default function Page() {
@@ -30,8 +31,8 @@ export default function Page() {
     }
 
     return (
-        <div className="flex flex-col gap-10 justify-between mx-auto select-none pb-6 pt-16">
-            <div className="w-lvw max-w-4xl">
+        <div className="w-full">
+            <Container>
                 <div className="flex items-center gap-16">
                     <article>
                         <div className="flex flex-col gap-6">
@@ -84,7 +85,7 @@ export default function Page() {
                         </div>
                     </aside>
                 </div>
-            </div>
+            </Container>
         </div>
     );
 }
