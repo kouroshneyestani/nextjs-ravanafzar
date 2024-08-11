@@ -6,8 +6,6 @@ import {
     Container,
     ClockIcon,
     BarChartIcon,
-    TomanIcon,
-    Button,
     ProfileIcon,
     SettingsIcon,
 } from "@components";
