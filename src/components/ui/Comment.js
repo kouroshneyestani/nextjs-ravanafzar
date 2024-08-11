@@ -1,10 +1,8 @@
 import Image from "next/image";
 
 export default function Comment({
-    stars,
     image,
     title,
-    subtitle,
     description,
     className,
 }) {
@@ -17,6 +15,7 @@ export default function Comment({
                         width={45}
                         height={45}
                         className="rounded-full"
+                        alt="..."
                     />
                     <h4 className="font-bold">{title}</h4>
                 </div>
