@@ -22,15 +22,15 @@ export default function Home() {
                     <header>
                         <Container>
                             <h2 className="text-4xl font-bold">
-                                برترین مشاورین
+                                تست های روان شناسی
                             </h2>
                         </Container>
                     </header>
                     <Container>
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden">
-                            {consultants.map((item) => (
+                            {quizzes.map((item) => (
                                 <div className="-mb-1" key={item.id}>
-                                    <CardConsultants {...item} />
+                                    <CardQuiz {...item} />
                                 </div>
                             ))}
                         </div>
@@ -62,24 +62,6 @@ export default function Home() {
                                     />
                                 </div>
                             </div>
-                        </div>
-                    </Container>
-                </section>
-                <section className="w-full flex flex-col gap-24">
-                    <header>
-                        <Container>
-                            <h2 className="text-4xl font-bold">
-                                تست های روان شناسی
-                            </h2>
-                        </Container>
-                    </header>
-                    <Container>
-                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden">
-                            {quizzes.map((item) => (
-                                <div className="-mb-1" key={item.id}>
-                                    <CardQuiz {...item} />
-                                </div>
-                            ))}
                         </div>
                     </Container>
                 </section>

@@ -3,7 +3,7 @@ export const consultants = [
         id: 1,
         price: 180000,
         image: "/images/consultants/avatar-1.jpg",
-        title: "علیرضا هراتی",
+        title: "علیرضا طاعی",
         subtitle: "شماره پروانه اشتغال تخصصی: 13499",
         description:
             "طرحواره درمانگر، مشاوره فردی افسردگی، اضطراب و مشکل در روابط بین فردی",

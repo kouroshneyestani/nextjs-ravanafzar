@@ -5,11 +5,6 @@ export const links = [
         options: [],
     },
     {
-        href: "/consultants",
-        text: "مشاوره",
-        options: [],
-    },
-    {
         href: "/quizzes",
         text: "تست ها",
         options: [

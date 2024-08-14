@@ -20,11 +20,6 @@ const navItems = [
         options: [],
     },
     {
-        href: "/consultants",
-        text: "مشاوره",
-        options: [],
-    },
-    {
         href: "/quizzes",
         text: "تست ها",
         options: [
